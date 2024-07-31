@@ -6,6 +6,7 @@ import Link from './pages/Link/Link'
 import RedirectLink from './pages/RedirectLink/RedirectLink'
 import Authentication from './pages/Auth/Authentication'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import UrlProvider from './Context/Context'
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,9 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
+    <UrlProvider>
     <RouterProvider router={router}/>
+    </UrlProvider>
   )
 }
 
