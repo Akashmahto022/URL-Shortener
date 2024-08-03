@@ -2,7 +2,7 @@ import React from 'react'
 
 const Link = () => {
   return (
-    <div>Link</div>
+    <div>Lin anbdcjak</div>
   )
 }
 
