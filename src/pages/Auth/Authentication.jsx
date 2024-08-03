@@ -13,7 +13,7 @@ const Authentication = () => {
   const {isAuthentication, loading} = UrlState()
 
   useEffect(()=>{
-    if (isAuthentication && loading) {
+    if (isAuthentication && !loading) {
       navigate(`/deshboard?${longLink ? `createNew=${longLink}`:""}`);
     }
   },[isAuthentication , loading])

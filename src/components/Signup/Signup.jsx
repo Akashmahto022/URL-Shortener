@@ -17,7 +17,7 @@ import { signup } from "../../db/apiAuth";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { UrlState } from "../../Context/Context";
 
-const Sigup = () => {
+const Signup = () => {
   const [errors, setErrors] = useState([]);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -46,22 +46,20 @@ const Sigup = () => {
       navigate(`/deshboard?${longLink ? `createNew=${longLink}` : ""}`);
       fetchUser();
     }
-  }, [data, error]);
+  }, [error, loading]);
 
   const handleSignup = async (e) => {
     setErrors([]);
     try {
       const schema = Yup.object().shape({
-        fullName: Yup.string()
-          .required("fullName is required"),
+        fullName: Yup.string().required("fullName is required"),
         email: Yup.string()
           .email("Invalid Email")
           .required("Email is required"),
         password: Yup.string()
           .min(8, "Password mest be at least 8 characters")
           .required("Password is required"),
-          profile_pic: Yup.mixed()
-          .required("profile picture is required"),
+        profile_pic: Yup.mixed().required("profile picture is required"),
       });
 
       await schema.validate(formData, { abortEarly: false });
@@ -84,7 +82,7 @@ const Sigup = () => {
       <CardHeader>
         <CardTitle>Signup</CardTitle>
         <CardDescription>
-          Create a new account if you have.n't already
+          Create a new account if you haven't already
         </CardDescription>
         {error && <Error message={error.message} />}
       </CardHeader>
@@ -139,4 +137,4 @@ const Sigup = () => {
   );
 };
 
-export default Sigup;
+export default Signup;

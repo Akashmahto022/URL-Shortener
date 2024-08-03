@@ -7,7 +7,7 @@ const UrlContext = createContext();
 const UrlProvider = ({ children }) => {
   const { data: user, loading, fn: fetchUser } = UseFetch(getCurrentUser);
 
-  const isAuthentication = user?.role === "authentication";
+  const isAuthentication = user?.role === "authenticated";
 
   useEffect(() => {
     fetchUser();
