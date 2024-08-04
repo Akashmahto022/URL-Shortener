@@ -10,6 +10,7 @@ import { getUrls } from "@/db/apiUrls";
 import { UrlState } from "@/Context/Context";
 import { getClicksOfUrls } from "@/db/apiClicks";
 import LinkCart from "@/components/LinkCart/LinkCart";
+import CreateLink from "@/components/CreateLink/CreateLink";
 
 const DeshBoard = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -69,11 +70,11 @@ const DeshBoard = () => {
           <CardContent>
             <p>{clicks?.length}</p>
           </CardContent>
-        </Card>
+        </Card> 
       </div>
       <div className="flex justify-between">
         <h1 className="text-4xl font-extrabold">My links</h1>
-        <Button>Create Link</Button>
+        <CreateLink/>
       </div>
       <div className="relative">
         <Input
