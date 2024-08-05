@@ -22,6 +22,7 @@ export async function deleteUrl(id) {
   }
   return data;
 }
+
 export async function createUrl(
   { title, longUrl, customUrl, user_id },
   qrcode
@@ -37,7 +38,7 @@ export async function createUrl(
     throw new Error(storageError.message);
   }
 
-  const qr = `${supabaseUrl}/storage/v1/object/public/qr/${fileName}`;
+  const qr = `${supabaseUrl}/storage/v1/object/public/qrs/${fileName}`;
 
   const { data, error } = await supabase
     .from("urls")
@@ -52,9 +53,10 @@ export async function createUrl(
       },
     ])
     .select();
+
   if (error) {
     console.error(error.message);
-    throw new Error("Error While creating a url");
+    throw new Error("Error While creating a short url");
   }
   return data;
 }

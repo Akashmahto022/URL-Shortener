@@ -8,6 +8,7 @@ import { deleteUrl } from "@/db/apiUrls";
 
 
 const LinkCart = ({ url, fetchUrls }) => {
+  console.log(url.qr)
   const downloadImage = () => {
     const imageUrl = url?.qr;
     const fileName = url?.title;

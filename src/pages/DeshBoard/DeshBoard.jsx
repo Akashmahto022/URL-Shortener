@@ -49,6 +49,8 @@ const DeshBoard = () => {
     url.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  console.log(filterdUrls)
+
   return (
     <div className="flex flex-col gap-8">
       {(loading || loadingClicks) && (
