@@ -35,8 +35,6 @@ const DeshBoard = () => {
 
   useEffect(() => {
     fnUrls();
-    console.log(clicks)
-    console.log(urls)
   }, []);
 
   useEffect(() => {
@@ -49,7 +47,6 @@ const DeshBoard = () => {
     url.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  console.log(filterdUrls)
 
   return (
     <div className="flex flex-col gap-8">

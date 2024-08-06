@@ -1,4 +1,6 @@
+import { UAParser } from "ua-parser-js";
 import supabase, { supabaseUrl } from "./supaBase";
+import { parse } from "postcss";
 
 export async function getUrls(user_id) {
   const { data, error } = await supabase
@@ -58,5 +60,36 @@ export async function createUrl(
     console.error(error.message);
     throw new Error("Error While creating a short url");
   }
+  return data;
+}
+
+export async function getLongUrl(id) {
+  const { data, error } = await supabase
+    .from("urls") 
+    .select("id, original_url")
+    .or(`short_url.eq.${id},custom_url.eq.${id}`)
+    .single()
+
+  if (error) {
+    console.error(error.message);
+    throw new Error("Unable to load urls");
+  }
+
+  return data;
+}
+
+export async function getUrl({id, user_id}) {
+  const { data, error } = await supabase
+    .from("urls") 
+    .select("*")
+    .eq("id", id)
+    .eq("user_id", user_id)
+    .single();
+
+  if (error) {
+    console.error(error.message);
+    throw new Error("Short url not found");
+  }
+
   return data;
 }
