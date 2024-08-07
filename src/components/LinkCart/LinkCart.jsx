@@ -37,7 +37,7 @@ const LinkCart = ({ url, fetchUrls }) => {
           {url?.title}{" "}
         </span>
         <span className="text-2xl max-sm:text-[10px] text-blue-400 font-bold hover:underline cursor-pointer">
-        http://localhost:5173/{url?.custom_url ? url?.custom_url : url.short_url}
+        https://url-shortener-ve2f.onrender.com/{url?.custom_url ? url?.custom_url : url.short_url}
         </span>
         <span className="flex items-center gap-1 hover:underline cursor-pointer">
           {url?.original_url}
@@ -51,7 +51,7 @@ const LinkCart = ({ url, fetchUrls }) => {
         <Button
           variant="ghost"
           onClick={() =>
-            navigator.clipboard.writeText(`http://localhost:5173/${url?.short_url}`)
+            navigator.clipboard.writeText(`https://url-shortener-ve2f.onrender.com/${url?.short_url}`)
           }
         >
           <Copy />
