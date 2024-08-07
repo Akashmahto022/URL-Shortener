@@ -38,7 +38,7 @@ const Link = () => {
     fn: fnStats,
   } = UseFetch(getClickForUrl, id);
 
-  console.log(stats)
+  console.log(stats);
 
   const downloadImage = () => {
     const imageUrl = url?.qr;
@@ -76,31 +76,46 @@ const Link = () => {
         <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
       )}
 
-      <div className="flex flex-col gap-[100px] sm:flex-row justify-between">
+      <div className="flex flex-col gap-[90px] sm:flex-row justify-between">
         <div className="flex flex-col items-start gap-8 rounded-lg sm:w-2/5">
           <span className="text-6xl font-extrabold hover:underline cursor-pointer">
             {url?.title}
           </span>
-          <a
-            href={`https://trimer.in/${link}`}
-            target="_blank"
-            className="text-3xl sm:text-4xl text-blue-500 font-bold hover:underline cursor-pointer"
-          >
-            https://trimer.in/{link}
-          </a>
-          <a href={url?.original_url} target="_blank">
-            <LinkIcon className="p-1" />
-            {url?.original_url}
-          </a>
-          <span className="flex items-end font-extralight text-sm">
-            {new Date(url?.created_at).toLocaleString()}
-          </span>
+          <div className="flex gap-4">
+            <span className="text-white text-xl">Short link: </span>
+            <span>
+
+            <a
+              href={`http://localhost:5173/${link}`}
+              target="_blank"
+              className="flex text-xl max-sm:text-[12px] text-blue-500 font-bold hover:underline cursor-pointer"
+              >
+              http://localhost:5173/{link}
+            </a>
+              </span>
+          </div>
+          <div className="flex gap-4">
+            <span className="text-white text-xl">Original Link:</span>
+            <a
+              href={url?.original_url}
+              target="_blank"
+              className="flex  text-xl max-sm:text-[12px] text-blue-500 font-bold hover:underline cursor-pointer"
+            >
+              {url?.original_url}
+            </a>
+          </div>
+          <div className="flex gap-4 text-xl">
+            <span>Time of created:</span>
+            <span className="flex items-end font-extralight text-xl">
+              {new Date(url?.created_at).toLocaleString()}
+            </span>
+          </div>
           <div className="flex gap-2">
             <Button
               variant="ghost"
               onClick={() =>
                 navigator.clipboard.writeText(
-                  `https://trimer.in/${url?.short_url}`
+                  `http://localhost:5173/${url?.short_url}`
                 )
               }
             >
@@ -140,11 +155,9 @@ const Link = () => {
                 </CardContent>
               </Card>
               <CardTitle>Location data</CardTitle>
-              <LocationStats stats={stats}/>
+              <LocationStats stats={stats} />
               <CardTitle>Device Info</CardTitle>
-              <DeviceStats stats={stats}/>
-
-
+              <DeviceStats stats={stats} />
             </CardContent>
           ) : (
             <CardContent>

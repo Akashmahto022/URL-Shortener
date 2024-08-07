@@ -26,18 +26,18 @@ const LinkCart = ({ url, fetchUrls }) => {
   const { loading: loadingDelete, fn: fnDelete } = UseFetch(deleteUrl, url?.id);
 
   return (
-    <div className="flex flex-col md:flex-row gap-5 border p-4 bg-gray-900 rounded-lg">
+    <div className=" flex flex-col md:flex-row gap-5 border p-4 bg-gray-900 rounded-lg">
       <img
         className="h-32 object-contain ring ring-blue-500 self-start"
         src={url?.qr}
         alt="qr code"
       />
-      <Link to={`/link/${url?.id}`} className="flex flex-col flex-1">
+      <Link to={`/link/${url?.id}`} className="flex flex-col">
         <span className="text-3xl font-extrabold hover:underline cursor-pointer">
           {url?.title}{" "}
         </span>
-        <span className="text-2xl text-blue-400 font-bold hover:underline cursor-pointer">
-          https://trimer.in{url?.custom_url ? url?.custom_url : url.short_url}
+        <span className="text-2xl max-sm:text-[10px] text-blue-400 font-bold hover:underline cursor-pointer">
+        http://localhost:5173/{url?.custom_url ? url?.custom_url : url.short_url}
         </span>
         <span className="flex items-center gap-1 hover:underline cursor-pointer">
           {url?.original_url}
@@ -51,7 +51,7 @@ const LinkCart = ({ url, fetchUrls }) => {
         <Button
           variant="ghost"
           onClick={() =>
-            navigator.clipboard.writeText(`https://trimer.in/${url?.short_url}`)
+            navigator.clipboard.writeText(`http://localhost:5173/${url?.short_url}`)
           }
         >
           <Copy />
