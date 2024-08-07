@@ -86,11 +86,11 @@ const Link = () => {
             <span>
 
             <a
-              href={`http://localhost:5173/${link}`}
+              href={`https://url-shortener-ve2f.onrender.com/${link}`}
               target="_blank"
               className="flex text-xl max-sm:text-[12px] text-blue-500 font-bold hover:underline cursor-pointer"
               >
-              http://localhost:5173/{link}
+              https://url-shortener-ve2f.onrender.com/{link}
             </a>
               </span>
           </div>
@@ -115,7 +115,7 @@ const Link = () => {
               variant="ghost"
               onClick={() =>
                 navigator.clipboard.writeText(
-                  `http://localhost:5173/${url?.short_url}`
+                  `https://url-shortener-ve2f.onrender.com/${url?.short_url}`
                 )
               }
             >
