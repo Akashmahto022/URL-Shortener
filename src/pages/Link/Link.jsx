@@ -17,6 +17,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import LocationStats from "@/components/LocationStats/LocationStats";
+import DeviceStats from "@/components/DeviceStats/DeviceStats";
 
 const Link = () => {
   const { id } = useParams();
@@ -35,6 +37,8 @@ const Link = () => {
     data: stats,
     fn: fnStats,
   } = UseFetch(getClickForUrl, id);
+
+  console.log(stats)
 
   const downloadImage = () => {
     const imageUrl = url?.qr;
@@ -72,7 +76,7 @@ const Link = () => {
         <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
       )}
 
-      <div className="flex flex-col gap-8 sm:flex-row justify-between">
+      <div className="flex flex-col gap-[100px] sm:flex-row justify-between">
         <div className="flex flex-col items-start gap-8 rounded-lg sm:w-2/5">
           <span className="text-6xl font-extrabold hover:underline cursor-pointer">
             {url?.title}
@@ -136,7 +140,10 @@ const Link = () => {
                 </CardContent>
               </Card>
               <CardTitle>Location data</CardTitle>
+              <LocationStats stats={stats}/>
               <CardTitle>Device Info</CardTitle>
+              <DeviceStats stats={stats}/>
+
 
             </CardContent>
           ) : (
